@@ -50,7 +50,7 @@ for(let i = 0; i < data.length - 3; i++) {
   if(sumTwo > sumOne) tripleCount++;
 }
 
-console.log(tripleCount)
+console.log(tripleCount);
 
 // Refactor as function:
 const moreAccurateAmountOfIncreases = (numbers) => {
