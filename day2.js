@@ -96,3 +96,36 @@ data.forEach(direction => {
 const distanceTimesDepthWithAim = horizontalWithAim * depthWithAim;
 
 console.log(distanceTimesDepthWithAim);
+
+// refactor as function:
+const calculateDepthWithAim = (data) => {
+  let horizontal = 0;
+  let depth = 0;
+  let aim = 0;
+
+  data.forEach(entry => {
+    const splitEntry = entry.split(' ');
+
+    const direction = splitEntry[0];
+    const distance = Number(splitEntry[1]);
+
+    switch (direction) {
+      case 'forward':
+        horizontal += distance;
+        depth = depth + (aim * distance);
+        break;
+      case 'down':
+        aim += distance;
+        break;
+      case 'up':
+        aim -= distance;
+        break;
+      default:
+        break;
+    }
+  });
+
+  return horizontal * depth
+};
+
+console.log(calculateDepthWithAim(data));
