@@ -28,6 +28,37 @@ const distanceTimesDepth = horizontal * depth;
 
 console.log(distanceTimesDepth);
 
+// refactor as function:
+const calculateDepth = (data) => {
+  let horizontal = 0;
+  let depth = 0;
+
+  data.forEach(entry => {
+    const splitEntry = entry.split(' ');
+
+    const direction = splitEntry[0];
+    const distance = Number(splitEntry[1]);
+
+    switch (direction) {
+      case 'forward':
+        horizontal += distance;
+        break;
+      case 'down':
+        depth += distance;
+        break;
+      case 'up':
+        depth -= distance;
+        break;
+      default:
+        break;
+    }
+  });
+
+  return horizontal * depth
+};
+
+console.log(calculateDepth(data));
+
 
 //////////////////////////////////////////////////
 // PART 2
